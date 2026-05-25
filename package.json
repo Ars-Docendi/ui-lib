@@ -1,0 +1,50 @@
+{
+  "name": "@ars-docendi/ui",
+  "version": "1.0.0",
+  "description": "Ars Docendi component library",
+  "type": "module",
+  "license": "UNLICENSED",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./theme.css": "./dist/theme.css",
+    "./components.css": "./dist/components.css"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "tsc -b && vite build",
+    "prepare": "tsc -b && vite build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@storybook/react-vite": "^10.4.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "storybook": "^10.4.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12",
+    "vite-plugin-dts": "^4.0.0"
+  },
+  "packageManager": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800"
+}
