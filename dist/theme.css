@@ -1,0 +1,268 @@
+/* ============================================================
+   Ars Docendi · Design Tokens
+   ------------------------------------------------------------
+   Source of truth. Light theme on :root, dark theme on
+   [data-theme="dark"]. All values are oklch for perceptual
+   uniformity; fallback hex is documented in comments.
+
+   Scale rationale
+   - Spacing  : 4px base. 4 divides cleanly into hit targets
+                (44px = 11 units) and Excel-like rhythms users
+                are already trained on.
+   - Neutrals : 9 steps, warm hue (~75°). Institutional, calmer
+                than pure gray. Step 800 matches baseline #313131.
+   - Type     : 8-step scale anchored at 16px body. Floor 12px.
+   - Radii    : sharp by default (2px hairline). Pills only on
+                badges/avatars (principle 03: borders, not chrome).
+   - Motion   : 4 durations, 4 easings. No bouncy springs.
+   ============================================================ */
+
+:root {
+  /* --- UI SCALE ----------------------------------------- */
+  /* Host app may override to scale the whole UI (e.g. 1.15 for 1080p /
+     older users). 1 = unchanged. Viewport-pinned overlay stages divide
+     by it so they still cover exactly one screen under root `zoom`. */
+  --ui-zoom: 1;
+
+  /* --- PRIMITIVE · NEUTRALS (warm) ---------------------- */
+  --neutral-100: oklch(98.0% 0.004 75);   /* ~#faf9f5 */
+  --neutral-200: oklch(95.0% 0.006 75);   /* ~#f1efe8 */
+  --neutral-300: oklch(91.0% 0.007 75);   /* ~#e6e3da */
+  --neutral-400: oklch(83.0% 0.007 75);   /* ~#cdc8bd */
+  --neutral-500: oklch(68.0% 0.007 75);   /* ~#a39e92 */
+  --neutral-600: oklch(52.0% 0.007 75);   /* ~#787469 */
+  --neutral-700: oklch(38.0% 0.006 75);   /* ~#54514a */
+  --neutral-800: oklch(25.0% 0.005 75);   /* ~#36342f  (baseline #313131) */
+  --neutral-900: oklch(14.0% 0.005 75);   /* ~#1c1b18 */
+
+  /* --- PRIMITIVE · BRAND ACCENT ------------------------- */
+  --accent-100: oklch(94.0% 0.030 165);
+  --accent-200: oklch(86.0% 0.060 165);
+  --accent-300: oklch(74.0% 0.090 165);
+  --accent-400: oklch(64.0% 0.110 165);
+  --accent-500: oklch(57.0% 0.115 165);  /* ~#009674 · baseline */
+  --accent-600: oklch(48.0% 0.100 165);
+  --accent-700: oklch(38.0% 0.080 165);
+  --accent-800: oklch(28.0% 0.060 165);
+
+  /* --- PRIMITIVE · SEMANTIC ----------------------------- */
+  --success-100: oklch(94.0% 0.030 150);
+  --success-500: oklch(55.0% 0.130 150);
+  --success-700: oklch(38.0% 0.090 150);
+
+  --warning-100: oklch(95.0% 0.040 80);
+  --warning-500: oklch(72.0% 0.140 75);
+  --warning-700: oklch(48.0% 0.110 70);
+
+  --danger-100: oklch(94.0% 0.040 25);
+  --danger-500: oklch(55.0% 0.180 25);
+  --danger-700: oklch(40.0% 0.140 25);
+
+  --info-100: oklch(94.0% 0.035 245);
+  --info-500: oklch(55.0% 0.140 245);
+  --info-700: oklch(38.0% 0.110 245);
+
+  /* --- SEMANTIC · SURFACE ------------------------------- */
+  --color-bg-canvas:   var(--neutral-200);
+  --color-bg-surface:  var(--neutral-100);
+  --color-bg-raised:   #ffffff;
+  --color-bg-sunken:   var(--neutral-300);
+  --color-bg-inverse:  var(--neutral-900);
+
+  /* --- SEMANTIC · TEXT --------------------------------- */
+  --color-text-primary:    var(--neutral-800);
+  --color-text-secondary:  var(--neutral-700);
+  --color-text-tertiary:   var(--neutral-600);
+  --color-text-disabled:   var(--neutral-500);
+  --color-text-on-accent:  #ffffff;
+  --color-text-on-inverse: var(--neutral-100);
+  --color-text-link:       var(--accent-600);
+  --color-text-danger:     var(--danger-700);
+
+  /* --- SEMANTIC · BORDER ------------------------------- */
+  --color-border-subtle:   var(--neutral-300);
+  --color-border-default:  var(--neutral-400);
+  --color-border-strong:   var(--neutral-700);
+  --color-border-ink:      var(--neutral-800);
+  --color-border-focus:    var(--accent-500);
+  --color-border-danger:   var(--danger-500);
+
+  /* --- SEMANTIC · ACCENT ------------------------------- */
+  --color-accent:          var(--accent-500);
+  --color-accent-hover:    var(--accent-600);
+  --color-accent-pressed:  var(--accent-700);
+  --color-accent-subtle:   var(--accent-100);
+  --color-accent-on:       #ffffff;
+
+  /* --- SEMANTIC · STATUS ------------------------------- */
+  --color-status-success-bg:   var(--success-100);
+  --color-status-success-fg:   var(--success-700);
+  --color-status-warning-bg:   var(--warning-100);
+  --color-status-warning-fg:   var(--warning-700);
+  --color-status-danger-bg:    var(--danger-100);
+  --color-status-danger-fg:    var(--danger-700);
+  --color-status-info-bg:      var(--info-100);
+  --color-status-info-fg:      var(--info-700);
+  --color-status-neutral-bg:   var(--neutral-200);
+  --color-status-neutral-fg:   var(--neutral-700);
+
+  /* --- TYPOGRAPHY · FAMILIES --------------------------- */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+               Consolas, monospace;
+  --font-display: var(--font-sans);
+
+  /* --- TYPOGRAPHY · WEIGHTS --------------------------- */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+
+  /* --- TYPOGRAPHY · SIZE / LINE-HEIGHT ---------------- */
+  --text-display-size: 36px;  --text-display-lh: 1.10;  --text-display-weight: 600;
+  --text-title-size:   24px;  --text-title-lh:   1.20;  --text-title-weight:   600;
+  --text-heading-size: 20px;  --text-heading-lh: 1.30;  --text-heading-weight: 600;
+  --text-subhead-size: 16px;  --text-subhead-lh: 1.40;  --text-subhead-weight: 600;
+  --text-body-size:    16px;  --text-body-lh:    1.55;  --text-body-weight:    400;
+  --text-body-sm-size: 14px;  --text-body-sm-lh: 1.50;  --text-body-sm-weight: 400;
+  --text-caption-size: 13px;  --text-caption-lh: 1.40;  --text-caption-weight: 400;
+  --text-micro-size:   12px;  --text-micro-lh:   1.35;  --text-micro-weight:   500;
+
+  /* --- SPACING (4px base) ----------------------------- */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* --- RADII ------------------------------------------- */
+  --radius-none: 0;
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-pill: 9999px;
+
+  /* --- BORDER WIDTHS ---------------------------------- */
+  --border-hairline: 1px;
+  --border-default:  1px;
+  --border-emphasis: 1.5px;
+  --border-focus:    2px;
+
+  /* --- ELEVATION (border-driven, not shadow) ---------- */
+  --elev-0: 0 0 0 transparent;
+  --elev-1: inset 0 0 0 1px var(--color-border-subtle);
+  --elev-2: inset 0 0 0 1px var(--color-border-default);
+  --elev-3: 0 0 0 1px var(--color-border-strong),
+            0 0 0 4px var(--color-bg-canvas);
+
+  /* --- MOTION · DURATIONS ----------------------------- */
+  --motion-instant: 0ms;
+  --motion-fast:    120ms;
+  --motion-base:    200ms;
+  --motion-slow:    320ms;
+  --motion-slower:  480ms;
+
+  /* --- MOTION · EASINGS ------------------------------- */
+  --ease-linear:     linear;
+  --ease-standard:   cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+  --ease-enter:      cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit:       cubic-bezier(0.4, 0, 1, 1);
+
+  /* --- FOCUS RING (composed) -------------------------- */
+  --focus-ring:
+    0 0 0 2px var(--color-bg-canvas),
+    0 0 0 4px var(--color-border-focus);
+
+  /* --- Z-INDEX ---------------------------------------- */
+  --z-base:     0;
+  --z-sticky:   10;
+  --z-dropdown: 100;
+  --z-overlay:  500;
+  --z-modal:    600;
+  --z-toast:    900;
+}
+
+/* ============================================================
+   DARK THEME · reduced inversion, not pure
+   ============================================================ */
+[data-theme="dark"] {
+  --neutral-100: oklch(96.0% 0.005 75);
+  --neutral-200: oklch(85.0% 0.006 75);
+  --neutral-300: oklch(68.0% 0.007 75);
+  --neutral-400: oklch(52.0% 0.007 75);
+  --neutral-500: oklch(40.0% 0.006 75);
+  --neutral-600: oklch(30.0% 0.005 75);
+  --neutral-700: oklch(22.0% 0.005 75);
+  --neutral-800: oklch(16.0% 0.004 75);
+  --neutral-900: oklch(10.0% 0.004 75);
+
+  --accent-100: oklch(28.0% 0.060 165);
+  --accent-200: oklch(36.0% 0.080 165);
+  --accent-300: oklch(48.0% 0.100 165);
+  --accent-400: oklch(57.0% 0.115 165);
+  --accent-500: oklch(66.0% 0.120 165);
+  --accent-600: oklch(74.0% 0.105 165);
+  --accent-700: oklch(82.0% 0.085 165);
+  --accent-800: oklch(90.0% 0.060 165);
+
+  --success-100: oklch(26.0% 0.060 150);
+  --success-500: oklch(66.0% 0.130 150);
+  --success-700: oklch(82.0% 0.090 150);
+
+  --warning-100: oklch(28.0% 0.070 70);
+  --warning-500: oklch(78.0% 0.140 75);
+  --warning-700: oklch(88.0% 0.110 75);
+
+  --danger-100: oklch(26.0% 0.080 25);
+  --danger-500: oklch(68.0% 0.170 25);
+  --danger-700: oklch(82.0% 0.130 25);
+
+  --info-100: oklch(26.0% 0.060 245);
+  --info-500: oklch(70.0% 0.130 245);
+  --info-700: oklch(84.0% 0.100 245);
+
+  --color-bg-canvas:   var(--neutral-900);
+  --color-bg-surface:  var(--neutral-800);
+  --color-bg-raised:   var(--neutral-700);
+  --color-bg-sunken:   var(--neutral-900);
+  --color-bg-inverse:  var(--neutral-100);
+
+  --color-text-primary:    var(--neutral-100);
+  --color-text-secondary:  var(--neutral-200);
+  --color-text-tertiary:   var(--neutral-300);
+  --color-text-disabled:   var(--neutral-500);
+  --color-text-on-accent:  var(--neutral-900);
+  --color-text-on-inverse: var(--neutral-800);
+  --color-text-link:       var(--accent-600);
+
+  --color-border-subtle:   var(--neutral-700);
+  --color-border-default:  var(--neutral-600);
+  --color-border-strong:   var(--neutral-300);
+  --color-border-ink:      var(--neutral-100);
+  --color-border-focus:    var(--accent-500);
+
+  --color-accent-on:       var(--neutral-900);
+
+  --focus-ring:
+    0 0 0 2px var(--color-bg-canvas),
+    0 0 0 4px var(--color-border-focus);
+}
+
+/* ============================================================
+   Reduced-motion override (WCAG 2.3.3)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast:   0ms;
+    --motion-base:   0ms;
+    --motion-slow:   0ms;
+    --motion-slower: 0ms;
+  }
+}
