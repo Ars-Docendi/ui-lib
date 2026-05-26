@@ -3,6 +3,7 @@ name: Release
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@6
+      - uses: pnpm/action-setup@v6
         with:
           version: 10.33.4
 
