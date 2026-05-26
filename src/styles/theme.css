@@ -18,6 +18,12 @@
    ============================================================ */
 
 :root {
+  /* --- UI SCALE ----------------------------------------- */
+  /* Host app may override to scale the whole UI (e.g. 1.15 for 1080p /
+     older users). 1 = unchanged. Viewport-pinned overlay stages divide
+     by it so they still cover exactly one screen under root `zoom`. */
+  --ui-zoom: 1;
+
   /* --- PRIMITIVE · NEUTRALS (warm) ---------------------- */
   --neutral-100: oklch(98.0% 0.004 75);   /* ~#faf9f5 */
   --neutral-200: oklch(95.0% 0.006 75);   /* ~#f1efe8 */

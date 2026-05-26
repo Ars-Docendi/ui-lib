@@ -340,7 +340,9 @@
 
 /* ====================== MODAL =============================== */
 .adoc-modal-stage {
-  position: fixed; inset: 0;
+  position: fixed; top: 0; left: 0;
+  width: calc(100vw / var(--ui-zoom, 1));
+  height: calc(100vh / var(--ui-zoom, 1));
   z-index: var(--z-modal);
   display: flex; align-items: center; justify-content: center;
   padding: 24px;
@@ -392,7 +394,9 @@
 
 /* ====================== DRAWER ============================== */
 .adoc-drawer-stage {
-  position: fixed; inset: 0;
+  position: fixed; top: 0; left: 0;
+  width: calc(100vw / var(--ui-zoom, 1));
+  height: calc(100vh / var(--ui-zoom, 1));
   z-index: var(--z-modal);
   display: flex;
 }
