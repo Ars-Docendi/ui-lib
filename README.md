@@ -6,11 +6,13 @@ For per-component props and examples, see [USAGE.md](./USAGE.md).
 
 ## Install
 
-Install from a tarball, git URL, or registry — whatever fits your workflow. `react` and `react-dom` are peer dependencies (`^19.0.0`).
+Install directly from GitHub, pinned to a published release branch. `react` and `react-dom` are peer dependencies (`^19.0.0`).
 
 ```sh
-pnpm add @ars-docendi/ui react react-dom
+pnpm add github:Ars-Docendi/ui-lib#release/v1.0.0 react react-dom
 ```
+
+Each tagged release publishes a matching `release/vX.Y.Z` branch that contains the prebuilt `dist/`, so installs are fast and no build runs on the consumer machine.
 
 ## Quick start
 
@@ -78,6 +80,10 @@ Token groups (see `src/styles/theme.css` for full values):
 - `pnpm typecheck` — type-check only.
 - `pnpm storybook` — run Storybook on http://localhost:6006.
 - `pnpm build-storybook` — build the static Storybook site.
+
+## Releases
+
+Tag `vX.Y.Z` from `main` and push the tag — GitHub Actions builds the library and publishes a `release/vX.Y.Z` branch with `dist/` committed. That branch is what consumers install from.
 
 ## Live examples
 
