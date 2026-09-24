@@ -4,6 +4,7 @@ export * from "./components/Input";
 export * from "./components/Textarea";
 export * from "./components/Select";
 export * from "./components/DatePicker";
+export * from "./components/MonthYearPicker";
 export * from "./components/FileUpload";
 export * from "./components/Checkbox";
 export * from "./components/Radio";
