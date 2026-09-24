@@ -133,13 +133,38 @@
 .adoc-date {
   position: relative; display: inline-flex; align-items: stretch;
 }
-.adoc-date .adoc-input { padding-right: 36px; }
+.adoc-date .adoc-input { width: 100%; padding-right: 36px; }
 .adoc-date .cal-ico {
   position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
   width: 14px; height: 14px;
   color: var(--color-text-tertiary);
   pointer-events: none;
 }
+/* The native indicator stays clickable but invisible, on top of .cal-ico,
+   so only one icon shows and clicking it still opens the picker. */
+.adoc-date .adoc-input::-webkit-calendar-picker-indicator {
+  position: absolute; right: 0; top: 0;
+  width: 36px; height: 100%;
+  margin: 0; padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+/* Firefox draws its own non-stylable calendar button: keep only that one. */
+@supports (-moz-appearance: none) {
+  .adoc-date .cal-ico { display: none; }
+  .adoc-date .adoc-input { padding-right: 12px; }
+}
+
+/* ---- MONTH / YEAR PICKER ---- */
+.adoc-monthyear {
+  display: grid;
+  grid-template-columns: minmax(72px, 90px) minmax(0, 1fr);
+  gap: 8px;
+  min-width: 0;
+}
+.adoc-monthyear > * { min-width: 0; }
+.adoc-monthyear .adoc-input { width: 100%; }
+.adoc-monthyear .adoc-select[aria-invalid="true"] { border-color: var(--danger-500); background: var(--danger-100); }
 
 /* ---- FILE UPLOAD ---- */
 .adoc-dropzone {
