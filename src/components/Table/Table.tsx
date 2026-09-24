@@ -35,13 +35,22 @@ function TableToolbar({ left, right, children, className, ...rest }: TableToolba
   );
 }
 
-export interface TableRootProps extends TableHTMLAttributes<HTMLTableElement> {}
+export interface TableRootProps extends TableHTMLAttributes<HTMLTableElement> {
+  /**
+   * Max height of the scroll area (e.g. "calc(100vh - 260px)"). The table always
+   * scrolls horizontally inside its own container; with a max height it also
+   * scrolls vertically and the header stays pinned.
+   */
+  maxHeight?: string | number;
+}
 
-function TableRoot({ className, children, ...rest }: TableRootProps) {
+function TableRoot({ maxHeight, className, children, ...rest }: TableRootProps) {
   return (
-    <table className={cx("adoc-table", className)} {...rest}>
-      {children}
-    </table>
+    <div className="adoc-table-scroll" style={maxHeight !== undefined ? { maxHeight } : undefined}>
+      <table className={cx("adoc-table", className)} {...rest}>
+        {children}
+      </table>
+    </div>
   );
 }
 
